@@ -1,28 +1,35 @@
 package com.course_project.airlines.models;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
+@Entity
+@Table(name="flights")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Flight {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "flight_from")
     private String flightFrom;
+    @Column(name = "flight_to")
     private String flightTo;
-    //@DateTimeFormat(pattern = "dd-MM-yyyy")
-    //change type to Date
-    private String departDate;
-    private String returnDate;
+    @Column(name = "depart_date")
+    private Date departDate;
+    @Column(name = "return_date")
+    private Date returnDate;
+    @Column(name = "type_travaler")
     private String typeTraveler;
+    @Column(name = "order_status")
     private boolean orderStatus;
-
-    public Flight() {
-    }
-
-    public Flight(String flightFrom, String flightTo, String departDate, String returnDate, String typeTraveler, boolean orderStatus) {
-        this.flightFrom = flightFrom;
-        this.flightTo = flightTo;
-        this.departDate = departDate;
-        this.returnDate = returnDate;
-        this.typeTraveler = typeTraveler;
-        this.orderStatus = orderStatus;
-    }
 
     public String getStringOrderStatus(){
         return this.orderStatus ? "vacant" : "ordered";
