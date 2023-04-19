@@ -9,5 +9,10 @@
 </head>
 <body>
     <h1>Welcome page</h1>
+    <#list flights as flight>
+        <div>
+            <p>${flight.flightFrom}|${flight.flightTo}|${flight.departDate}|${flight.returnDate}|${flight.typeTraveler}|${flight.getStringOrderStatus()}</p>
+        </div>
+    </#list>
 </body>
 </html>
