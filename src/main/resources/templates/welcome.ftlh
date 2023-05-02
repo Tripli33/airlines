@@ -9,6 +9,10 @@
 </head>
 <body>
     <h1>Welcome page</h1>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="submit" value="Logout"/>
+    </form>
     <table class="flight_data_table">
         <tr>
             <th>From</th>
