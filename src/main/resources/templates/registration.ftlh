@@ -12,6 +12,7 @@
     Password: <input type="password" name="password"><br><br>
     <input type="hidden" name="_csrf" value="${_csrf.token}">
     <input type="submit" value="Register"/>
+    <a href="/"><input type="button" value="Back"></a>
 </form>
 </body>
 </html>

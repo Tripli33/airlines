@@ -9,10 +9,18 @@
 </head>
 <body>
     <h1>Welcome page</h1>
-    <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <input type="submit" value="Logout"/>
-    </form>
+    <#if user.email??>
+        <p>${user.name}</p>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="${_csrf.token}">
+            <input type="submit" value="Logout"/>
+        </form>
+        <a href="/order"><input type="button" value="Order a ticket"></a>
+        <a href="/personal"><input type="button" value="Your tickets"></a>
+    <#else>
+        <a href="/login"><input type="button" value="Login"></a>
+        <a href="/registration"><input type="button" value="Registration"></a>
+    </#if>
     <table class="flight_data_table">
         <tr>
             <th>From</th>

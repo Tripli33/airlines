@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="flights")
+@Table(name="flight")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,15 +21,18 @@ public class Flight {
     @Column(name = "flight_to")
     private String flightTo;
     @Column(name = "depart_date")
-    private Date departDate;
+    private String departDate;
     @Column(name = "return_date")
-    private Date returnDate;
+    private String returnDate;
     @Column(name = "type_travaler")
     private String typeTraveler;
     @Column(name = "order_status")
     private boolean orderStatus;
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn
+    private User user;
 
     public String getStringOrderStatus(){
-        return this.orderStatus ? "vacant" : "ordered";
+        return this.orderStatus ? "ordered" : "vacant";
     }
 }
