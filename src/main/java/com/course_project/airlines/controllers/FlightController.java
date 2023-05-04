@@ -20,6 +20,11 @@ public class FlightController {
         model.addAttribute("user", flightService.getUserByPrincipal(principal));
         return "welcome";
     }
+    @GetMapping("/personal")
+    public String personal(Model model, Principal principal){
+        model.addAttribute("flights", flightService.getUserFlights(principal));
+        return "personal";
+    }
     @GetMapping("/order")
     public String order() {
         return "order";

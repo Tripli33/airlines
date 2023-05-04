@@ -8,18 +8,20 @@
     <title>Welcome page</title>
 </head>
 <body>
-    <h1>Welcome page</h1>
+    <h1>Airlines</h1>
     <#if user.email??>
-        <p>${user.name}</p>
         <form action="/logout" method="post">
+            <p>${user.name}</p>
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <input type="submit" value="Logout"/>
         </form>
-        <a href="/order"><input type="button" value="Order a ticket"></a>
+        <p>Find your next stay</p>
+        <a href="/order"><input type="button" value="Book a flight"></a>
         <a href="/personal"><input type="button" value="Your tickets"></a>
     <#else>
-        <a href="/login"><input type="button" value="Login"></a>
-        <a href="/registration"><input type="button" value="Registration"></a>
+        <a href="/login"><input type="button" value="Sing in"></a>
+        <a href="/registration"><input type="button" value="Register"></a>
+        <p>Login or register to book a flight</p>
     </#if>
     <table class="flight_data_table">
         <tr>

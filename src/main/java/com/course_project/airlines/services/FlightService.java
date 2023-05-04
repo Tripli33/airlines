@@ -1,5 +1,6 @@
 package com.course_project.airlines.services;
 
+import com.course_project.airlines.controllers.FlightController;
 import com.course_project.airlines.models.Flight;
 import com.course_project.airlines.models.User;
 import com.course_project.airlines.repositories.FlightRepository;
@@ -7,7 +8,6 @@ import com.course_project.airlines.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.security.Principal;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +28,10 @@ public class FlightService {
         flight.setOrderStatus(true);
         flight.setUser(getUserByPrincipal(principal));
         flightRepository.save(flight);
+    }
+
+    public List<Flight> getUserFlights(Principal principal){
+        return flightRepository.findFlightsByUser(userRepository.findByEmail(principal.getName()));
     }
 
     public User getUserByPrincipal(Principal principal) {
