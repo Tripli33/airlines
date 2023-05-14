@@ -9,6 +9,6 @@ import java.util.List;
 public interface FlightRepository extends JpaRepository<Flight, Long> {
     //TODO add find by order status true
     Flight findFlightByFlightFromAndFlightToAndDepartDateAndReturnDateAndTypeTraveler(String flightFrom, String flightTo, String departDate, String returnDate, String typeTraveler);
-    List<Flight> findFlightsByUser(User user);
 
+    List<Flight> findFlightsByUser(User user);
 }

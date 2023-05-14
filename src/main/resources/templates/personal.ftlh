@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Your tickets:</h1>
-    <table class="flight_data_table">
+    <table class="flight_data_table" border="1">
         <tr>
             <th>From</th>
             <th>To</th>

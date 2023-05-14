@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome page</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h1>Airlines</h1>
@@ -18,12 +19,16 @@
         <p>Find your next stay</p>
         <a href="/order"><input type="button" value="Book a flight"></a>
         <a href="/personal"><input type="button" value="Your tickets"></a>
+        <#if user.isAdmin()>
+            <a href="/admin"><input type="button" value="User admin panel"></a>
+            <a href="/add-ticket"><input type="button" value="Add ticket"></a>
+        </#if>
     <#else>
         <a href="/login"><input type="button" value="Sing in"></a>
         <a href="/registration"><input type="button" value="Register"></a>
         <p>Login or register to book a flight</p>
     </#if>
-    <table class="flight_data_table">
+    <table class="flight_data_table" border="1">
         <tr>
             <th>From</th>
             <th>To</th>
