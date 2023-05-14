@@ -21,7 +21,7 @@
         <a href="/personal"><input type="button" value="Your tickets"></a>
         <#if user.isAdmin()>
             <a href="/admin"><input type="button" value="User admin panel"></a>
-            <a href="/add-ticket"><input type="button" value="Add ticket"></a>
+            <a href="/add-flight"><input type="button" value="Add ticket"></a>
         </#if>
     <#else>
         <a href="/login"><input type="button" value="Sing in"></a>

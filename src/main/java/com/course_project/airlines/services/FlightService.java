@@ -3,6 +3,7 @@ package com.course_project.airlines.services;
 import com.course_project.airlines.controllers.FlightController;
 import com.course_project.airlines.models.Flight;
 import com.course_project.airlines.models.User;
+import com.course_project.airlines.models.enums.Role;
 import com.course_project.airlines.repositories.FlightRepository;
 import com.course_project.airlines.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,10 @@ public class FlightService {
     public User getUserByPrincipal(Principal principal) {
         if (principal == null) return new User();
         return userRepository.findByEmail(principal.getName());
+    }
+
+    public void createFlight(Flight flight) {
+        flight.setOrderStatus(false);
+        flightRepository.save(flight);
     }
 }

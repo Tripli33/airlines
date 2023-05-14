@@ -1,7 +1,9 @@
 package com.course_project.airlines.controllers;
 
+import com.course_project.airlines.models.Flight;
 import com.course_project.airlines.models.User;
 import com.course_project.airlines.models.enums.Role;
+import com.course_project.airlines.services.FlightService;
 import com.course_project.airlines.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,6 +22,7 @@ import java.util.Map;
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 public class AdminController {
     private final UserService userService;
+    private final FlightService flightService;
     @GetMapping("/admin")
     public String admin(Model model) {
         model.addAttribute("users", userService.list());
@@ -44,5 +47,17 @@ public class AdminController {
         userService.changeUserRoles(user, form);
         return "redirect:/admin";
     }
+
+    @GetMapping("/add-flight")
+    public String test(){
+        return "add-flight";
+    }
+
+    @PostMapping("/add-flight")
+    public String addFlight(Flight flight){
+        flightService.createFlight(flight);
+        return "redirect:/add-flight";
+    }
+
 
 }
