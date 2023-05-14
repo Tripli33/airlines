@@ -1,16 +1,14 @@
 package com.course_project.airlines.services;
 
-import com.course_project.airlines.controllers.FlightController;
 import com.course_project.airlines.models.Flight;
 import com.course_project.airlines.models.User;
-import com.course_project.airlines.models.enums.Role;
 import com.course_project.airlines.repositories.FlightRepository;
 import com.course_project.airlines.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.security.Principal;
-import java.util.Date;
+
 import java.util.List;
 
 @Service
@@ -25,7 +23,7 @@ public class FlightService {
     }
 
     public void orderFlight(Principal principal, String flightFrom, String flightTo, String departDate, String returnDate, String typeTraveler){
-        Flight flight = flightRepository.findFlightByFlightFromAndFlightToAndDepartDateAndReturnDateAndTypeTraveler(flightFrom, flightTo, departDate, returnDate,typeTraveler);
+        Flight flight = flightRepository.findFlightByFlightFromAndFlightToAndDepartDateAndReturnDateAndTypeTravelerAndOrderStatus(flightFrom, flightTo, departDate, returnDate,typeTraveler, false);
         flight.setOrderStatus(true);
         flight.setUser(getUserByPrincipal(principal));
         flightRepository.save(flight);

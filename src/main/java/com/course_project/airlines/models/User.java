@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
-
 @Entity
 @Table(name = "user")
 @Data
@@ -42,6 +41,10 @@ public class User implements UserDetails {
 
     public boolean isAdmin() {
         return roles.contains(Role.ROLE_ADMIN);
+    }
+
+    public String getStringUserActive(){
+        return this.active ? "Ban" : "Unban";
     }
 
     @Override

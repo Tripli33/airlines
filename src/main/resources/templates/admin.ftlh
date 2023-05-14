@@ -23,13 +23,14 @@
                 <td>
                     <form action="/admin/user/ban/${user.id}" method="post">
                         <input type="hidden" name="_csrf" value="${_csrf.token}">
-                        <input type="submit" value="Ban">
+                        <input type="submit" value="${user.getStringUserActive()}">
                     </form>
                 </td>
                 <td><a href="/admin/user/edit/${user.id}"><input type="button" value="Edit"></a></td>
             </tr>
         </#list>
     </table>
+    <br>
     <a href="/"><input type="button" value="Back"></a>
 </body>
 </html>

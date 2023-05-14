@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -55,9 +54,9 @@ public class UserService {
                 .map(Role::name)
                 .collect(Collectors.toSet());
         user.getRoles().clear();
-        for (String key : form.keySet()) {
-            if (roles.contains(key)) {
-                user.getRoles().add(Role.valueOf(key));
+        for (String val : form.values()) {
+            if (roles.contains(val)) {
+                user.getRoles().add(Role.valueOf(val));
             }
         }
         userRepository.save(user);
