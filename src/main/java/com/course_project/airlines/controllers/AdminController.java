@@ -27,35 +27,33 @@ public class AdminController {
         return "admin";
     }
 
-    @PostMapping("/admin/user/ban/{id}")
-    public String userBan(@PathVariable("id") Long id) {
+    @PostMapping("/admin")
+    public String userBan(@RequestParam("userId") Long id) {
         userService.banUser(id);
         return "redirect:/admin";
     }
 
-    @GetMapping("/admin/user/edit/{user}")
+    @GetMapping("/admin/edit/{user}")
     public String userEdit(@PathVariable("user") User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
         return "user-edit";
     }
 
-    @PostMapping("/admin/user/edit")
+    @PostMapping("/admin/edit")
     public String userEdit(@RequestParam("userId") User user, @RequestParam Map<String, String> form) {
         userService.changeUserRoles(user, form);
         return "redirect:/admin";
     }
 
-    @GetMapping("/add-flight")
-    public String test(){
+    @GetMapping("/admin/add-flight")
+    public String addFlight(){
         return "add-flight";
     }
 
-    @PostMapping("/add-flight")
+    @PostMapping("/admin/add-flight")
     public String addFlight(Flight flight){
         flightService.createFlight(flight);
-        return "redirect:/add-flight";
+        return "redirect:/admin/add-flight";
     }
-
-
 }

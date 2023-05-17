@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>User edit</h1><hr>
-    <form action="/admin/user/edit" method="post">
+    <form action="/admin/edit" method="post">
         <#list roles as role>
 <#--            <div>-->
 <#--                <label><input type="checkbox" name="${role}" ${user.roles?seq_contains(role)?string("checked", "")}>${role}</label>-->

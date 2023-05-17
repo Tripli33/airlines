@@ -21,12 +21,13 @@
                 <td><#if user.active>true<#else>false</#if></td>
                 <td><#list user.roles as role>${role} </#list></td>
                 <td>
-                    <form action="/admin/user/ban/${user.id}" method="post">
+                    <form action="/admin" method="post">
+                        <input type="hidden" value="${user.id}" name="userId">
                         <input type="hidden" name="_csrf" value="${_csrf.token}">
                         <input type="submit" value="${user.getStringUserActive()}">
                     </form>
                 </td>
-                <td><a href="/admin/user/edit/${user.id}"><input type="button" value="Edit"></a></td>
+                <td><a href="/admin/edit/${user.id}"><input type="button" value="Edit"></a></td>
             </tr>
         </#list>
     </table>

@@ -19,7 +19,7 @@
         <br>
         <#if user.isAdmin()>
             <a href="/admin"><input type="button" value="User admin panel"></a>
-            <a href="/add-flight"><input type="button" value="Add ticket"></a>
+            <a href="admin/add-flight"><input type="button" value="Add flight"></a>
         <#else>
             <p>Find your next stay</p>
             <a href="/order"><input type="button" value="Book a flight"></a>

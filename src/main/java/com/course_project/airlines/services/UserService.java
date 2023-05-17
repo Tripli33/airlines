@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -36,16 +38,9 @@ public class UserService {
     }
 
     public void banUser(Long id) {
-        User user = userRepository.findById(id).orElse(null);
-        if (user != null) {
-            if (user.isActive()) {
-                user.setActive(false);
-                log.info("Ban user with id = {}; email: {}", user.getId(), user.getEmail());
-            } else {
-                user.setActive(true);
-                log.info("Unban user with id = {}; email: {}", user.getId(), user.getEmail());
-            }
-        }
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
+        user.setActive(!user.isActive());
         userRepository.save(user);
     }
 
@@ -57,6 +52,7 @@ public class UserService {
         for (String val : form.values()) {
             if (roles.contains(val)) {
                 user.getRoles().add(Role.valueOf(val));
+                break;
             }
         }
         userRepository.save(user);

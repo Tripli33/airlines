@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Add flight:</h1>
-<form action="/add-flight" method="post">
+<form action="/admin/add-flight" method="post">
     From: <input type="text" name="flightFrom"><br><br>
     To: <input type="text" name="flightTo"><br><br>
     Depart date: <input type="datetime-local" name="departDate"><br><br>
