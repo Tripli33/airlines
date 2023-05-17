@@ -41,6 +41,10 @@
             <th>Order status</th>
             <#if user.isAdmin()>
                 <th>User Email</th>
+            <#else>
+                <#if user.email??>
+                    <th>Order</th>
+                </#if>
             </#if>
         </tr>
         <#list flights as flight>
