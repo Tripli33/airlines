@@ -3,17 +3,17 @@ package com.course_project.airlines.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name="flight")
+@Table(name = "flight")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Flight {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     @Column(name = "flight_from")
@@ -32,7 +32,7 @@ public class Flight {
     @JoinColumn
     private User user;
 
-    public String getStringOrderStatus(){
-        return this.orderStatus ? "ordered" : "vacant";
+    public String getStringOrderStatus() {
+        return this.orderStatus ? "Ordered" : "Vacant";
     }
 }

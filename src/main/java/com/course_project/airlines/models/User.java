@@ -4,10 +4,10 @@ import com.course_project.airlines.models.enums.Role;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
-
 
 @Entity
 @Table(name = "user")
@@ -38,6 +38,14 @@ public class User implements UserDetails {
     @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();
+    }
+
+    public boolean isAdmin() {
+        return roles.contains(Role.ROLE_ADMIN);
+    }
+
+    public String getStringUserActive() {
+        return this.active ? "Ban" : "Unban";
     }
 
     @Override
