@@ -4,6 +4,7 @@ import com.course_project.airlines.models.enums.Role;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -43,7 +44,7 @@ public class User implements UserDetails {
         return roles.contains(Role.ROLE_ADMIN);
     }
 
-    public String getStringUserActive(){
+    public String getStringUserActive() {
         return this.active ? "Ban" : "Unban";
     }
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -21,6 +22,7 @@ import java.util.Map;
 public class AdminController {
     private final UserService userService;
     private final FlightService flightService;
+
     @GetMapping("/admin")
     public String admin(Model model) {
         model.addAttribute("users", userService.list());
@@ -47,12 +49,12 @@ public class AdminController {
     }
 
     @GetMapping("/admin/add-flight")
-    public String addFlight(){
+    public String addFlight() {
         return "add-flight";
     }
 
     @PostMapping("/admin/add-flight")
-    public String addFlight(Flight flight){
+    public String addFlight(Flight flight) {
         flightService.createFlight(flight);
         return "redirect:/admin/add-flight";
     }

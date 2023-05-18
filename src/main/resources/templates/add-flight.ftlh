@@ -11,9 +11,9 @@
     Depart date: <input type="datetime-local" name="departDate"><br><br>
     Return date: <input type="datetime-local" name="returnDate"><br><br>
     Type traveler: <select name="typeTraveler">
-        <option value="children">Children</option>
-        <option value="adult">Adult</option>
-        <option value="seniors">Seniors</option>
+        <option value="Children">Children</option>
+        <option value="Adult">Adult</option>
+        <option value="Senior">Seniors</option>
     </select><br><br>
     <input type="hidden" name="_csrf" value="${_csrf.token}">
     <input type="submit" value="Save"/>

@@ -9,51 +9,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Airlines</h1>
-    <#if user.email??>
-        <form action="/logout" method="post">
-            <p>${user.name}</p>
-            <input type="hidden" name="_csrf" value="${_csrf.token}">
-            <input type="submit" value="Logout"/>
-        </form>
-        <br>
-        <#if user.isAdmin()>
-            <a href="/admin"><input type="button" value="User admin panel"></a>
-            <a href="admin/add-flight"><input type="button" value="Add flight"></a>
-        <#else>
-            <p>Find your next stay</p>
-            <a href="/order"><input type="button" value="Book a flight"></a>
-            <a href="/personal"><input type="button" value="Your tickets"></a>
-        </#if>
-    <#else>
-        <a href="/login"><input type="button" value="Sing in"></a>
-        <a href="/registration"><input type="button" value="Register"></a>
-        <p>Login or register to book a flight</p>
-    </#if>
-    <br><br>
-    <table class="flight_data_table" border="1">
-        <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Depart</th>
-            <th>Return</th>
-            <th>Traveler</th>
-            <th>Order status</th>
-            <#if user.isAdmin()>
-                <th>User Email</th>
-            <#else>
-                <#if user.email??>
-                    <th>Order</th>
-                </#if>
-            </#if>
-        </tr>
-        <#list flights as flight>
-            <#if user.isAdmin()>
-                <#include "blocks/admin-table.ftlh">
-            <#else>
-                <#include "blocks/user-table.ftlh">
-            </#if>
-        </#list>
-    </table>
+<h1>Airlines</h1>
+<#if user.isAdmin()>
+    <#include "blocks/admin-representation.ftlh">
+<#else>
+    <#include "blocks/user-representation.ftlh">
+</#if>
 </body>
 </html>
