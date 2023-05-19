@@ -17,6 +17,7 @@
         <th>Traveler</th>
         <th>Order status</th>
         <th>User Email</th>
+        <th>Cancel/Delete</th>
     </tr>
     <#list flights as flight>
         <tr>
@@ -28,8 +29,22 @@
             <td>${flight.getStringOrderStatus()}</td>
             <#if flight.getUser()??>
                 <td>${flight.getUser().getUsername()}</td>
+                <td>
+                    <form action="/admin/cancel" method="post">
+                        <input type="hidden" value="${flight.id}" name="flightId">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}">
+                        <input type="submit" value="Cancel">
+                    </form>
+                </td>
             <#else>
                 <td>Empty</td>
+                <td>
+                    <form action="/admin/delete" method="post">
+                        <input type="hidden" value="${flight.id}" name="flightId">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
             </#if>
         </tr>
     </#list>

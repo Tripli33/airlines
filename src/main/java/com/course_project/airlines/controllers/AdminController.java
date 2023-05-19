@@ -58,4 +58,16 @@ public class AdminController {
         flightService.createFlight(flight);
         return "redirect:/admin/add-flight";
     }
+
+    @PostMapping("/admin/cancel")
+    public String cancelUserFlight(@RequestParam("flightId") Long id){
+        flightService.cancelFlight(id);
+        return "redirect:/";
+    }
+
+    @PostMapping("/admin/delete")
+    public String deleteFlight(@RequestParam("flightId") Long id){
+        flightService.deleteFlight(id);
+        return "redirect:/";
+    }
 }
