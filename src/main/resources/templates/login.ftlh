@@ -7,10 +7,10 @@
 <h1>Sing in Airlines</h1>
 <form action="/login" method="post">
     Email: <label>
-        <input type="email" name="username">
+        <input type="email" name="username" required>
     </label><br><br>
     Password: <label>
-        <input type="password" name="password">
+        <input type="password" name="password" required>
     </label><br><br>
     <input type="hidden" name="_csrf" value="${_csrf.token}">
     <input type="submit" value="Login"/>

@@ -6,7 +6,6 @@
 <body>
 <#-- TODO if statement for the case when there are no tickets -->
 <h1>Your tickets:</h1>
-<p>Now you don't have flights</p>
 <table class="flight_data_table" border="1">
     <tr>
         <th>From</th>
