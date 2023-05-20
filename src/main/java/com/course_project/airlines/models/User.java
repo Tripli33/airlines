@@ -52,9 +52,6 @@ public class User implements UserDetails {
         return roles.contains(Role.ROLE_ADMIN);
     }
 
-    public String getStringUserActive() {
-        return this.active ? "Ban" : "Unban";
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
