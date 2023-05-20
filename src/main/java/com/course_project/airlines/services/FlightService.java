@@ -54,4 +54,10 @@ public class FlightService {
         flight.setOrderStatus(false);
         flightRepository.save(flight);
     }
+
+    public void deleteFlight(Long id){
+        Flight flight = flightRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Flight not found with id " + id));
+        flightRepository.delete(flight);
+    }
 }

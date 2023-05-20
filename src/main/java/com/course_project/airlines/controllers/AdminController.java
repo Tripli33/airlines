@@ -9,11 +9,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -54,8 +56,24 @@ public class AdminController {
     }
 
     @PostMapping("/admin/add-flight")
-    public String addFlight(Flight flight) {
+    public String addFlight(@Valid Flight flight, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("bindingResult", bindingResult);
+            return "add-flight";
+        }
         flightService.createFlight(flight);
         return "redirect:/admin/add-flight";
+    }
+
+    @PostMapping("/admin/cancel")
+    public String cancelUserFlight(@RequestParam("flightId") Long id){
+        flightService.cancelFlight(id);
+        return "redirect:/";
+    }
+
+    @PostMapping("/admin/delete")
+    public String deleteFlight(@RequestParam("flightId") Long id){
+        flightService.deleteFlight(id);
+        return "redirect:/";
     }
 }

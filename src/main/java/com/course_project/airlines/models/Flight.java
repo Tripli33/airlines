@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "flight")
@@ -16,12 +17,16 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @NotBlank(message = "Flight from required")
     @Column(name = "flight_from")
     private String flightFrom;
+    @NotBlank(message = "Flight to required")
     @Column(name = "flight_to")
     private String flightTo;
+    @NotBlank(message = "Depart date required")
     @Column(name = "depart_date")
     private String departDate;
+    @NotBlank(message = "Return date required")
     @Column(name = "return_date")
     private String returnDate;
     @Column(name = "type_travaler")
