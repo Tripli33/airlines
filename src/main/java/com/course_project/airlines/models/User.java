@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -17,14 +18,21 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    @NotBlank(message = "Email required")
     @Column(name = "email", unique = true)
     private String email;
+
+    @Pattern(regexp = "\\+\\d{3}\\s?\\(?(\\d{2})\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{2}[-.\\s]?\\d{2}",
+            message = "Incorrect phone number")
     @Column(name = "phone_number", unique = true)
     private String phoneNumber;
+    @NotBlank(message = "Username required")
     @Column(name = "name")
     private String name;
     @Column(name = "active")
     private boolean active;
+
+    @Size(min = 4, message = "Password must contain at least 4 characters")
     @Column(name = "password", length = 1000)
     private String password;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
