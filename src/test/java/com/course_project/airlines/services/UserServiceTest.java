@@ -3,9 +3,6 @@ package com.course_project.airlines.services;
 import com.course_project.airlines.models.User;
 import com.course_project.airlines.models.enums.Role;
 import com.course_project.airlines.repositories.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +11,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityNotFoundException;
-import java.lang.reflect.Array;
-import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class UserServiceTest {
     @Autowired
@@ -42,21 +38,21 @@ class UserServiceTest {
 
     @Test
     void list() {
-        List<User> users = Arrays.asList(new User(), new User());
-        Mockito.when(userRepository.findAll()).thenReturn(users);
+        List<User> mockUsers = Arrays.asList(new User(), new User());
+        Mockito.when(userRepository.findAll()).thenReturn(mockUsers);
         assertEquals(userService.list(), Arrays.asList(new User(), new User()));
     }
 
     @Test
     void banUser() {
-        User user = new User();
-        userService.createUser(user);
-        user.setId(1L);
-        Mockito.when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        User mockUser = new User();
+        userService.createUser(mockUser);
+        mockUser.setId(1L);
+        Mockito.when(userRepository.findById(1L)).thenReturn(Optional.of(mockUser));
         userService.banUser(1L);
-        assertFalse(user.isActive());
+        assertFalse(mockUser.isActive());
         assertThrows(EntityNotFoundException.class, () -> userService.banUser(0L));
-        Mockito.verify(userRepository, Mockito.times(2)).save(user);
+        Mockito.verify(userRepository, Mockito.times(2)).save(mockUser);
     }
 
     @Test
