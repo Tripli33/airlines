@@ -60,7 +60,7 @@ footer {
     top: calc(50% - 20px);
 }
 
-/*header*/
+/*header styles*/
 header {
     background-image: linear-gradient(to bottom, #214491 0%, #072B73 100%);
     padding: 10px;
@@ -78,24 +78,29 @@ header img {
     width: 48px;
 }
 
-/*body*/
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .user-panel {
     display: flex;
     gap: 10px;
     align-items: center;
-    margin-bottom: 20px;
-    justify-content: flex-end;
 }
 
 .user-panel p {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 0;
+    color: #FFFFFF;
 }
 
-.admin-bar {
+/*body styles*/
+.panel {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px;
     margin-bottom: 10px;
 }

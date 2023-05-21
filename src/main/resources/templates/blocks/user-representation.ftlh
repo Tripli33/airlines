@@ -1,18 +1,9 @@
 <#-- TODO if statement for the case when there are no tickets -->
 <#if user.email??>
-    <form action="/logout" method="post" class="user-panel">
-        <p>${user.name}</p>
+    <div class="panel">
         <a href="/personal"><input class="btn btn-primary" type="button" value="Your tickets"></a>
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <input class="btn btn-danger" type="submit" value="Logout"/>
-    </form>
-    <h2>Find your next stay:</h2>
-<#else>
-    <div class="user-panel">
-        <p>Login or register to book a flight</p>
-        <a href="/login"><input class="btn btn-primary" type="button" value="Sing in"></a>
-        <a href="/registration"><input class="btn btn-primary" type="button" value="Register"></a>
     </div>
+    <h2>Find your next stay:</h2>
 </#if>
 <#if flights?has_content>
     <table class="table table-striped" border="1">
@@ -50,5 +41,6 @@
         </#list>
     </table>
 <#else>
+    <#--TO DO if statment for case: not fligts in welcome page - user have ordere flight  -->
     <h4>No available flights</h4>
 </#if>

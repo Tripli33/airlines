@@ -1,10 +1,4 @@
-<#-- TODO if statement for the case when there are no tickets -->
-<form action="/logout" method="post" class="user-panel">
-    <p>${user.name}</p>
-    <input type="hidden" name="_csrf" value="${_csrf.token}">
-    <input class="btn btn-danger" type="submit" value="Logout"/>
-</form>
-<div class="admin-bar">
+<div class="panel">
     <a href="/admin"><input class="btn btn-primary" type="button" value="User admin panel"></a>
     <a href="admin/add-flight"><input class="btn btn-primary" type="button" value="Add flight"></a>
 </div>
