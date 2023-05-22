@@ -7,5 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FlightRepository extends JpaRepository<Flight, Long> {
+    /**
+     * Method for getting all user flight entities from the table "flight"
+     *
+     * @param user - user entity
+     * @return - all user flights
+     */
     List<Flight> findFlightsByUser(User user);
 }

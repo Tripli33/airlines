@@ -20,6 +20,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final CustomUserDetailsService userDetailsService;
 
+    /**
+     * Method for configuring the HTTP security settings for the application.
+     *
+     * @param http - HttpSecurity object to be configured
+     * @throws Exception - if an error occurs during configuration
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -36,18 +42,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
+    /**
+     * Method for configuring the authentication manager builder with the user details service and password encoder
+     *
+     * @param auth - AuthenticationManagerBuilder object to be configured
+     * @throws Exception - if an error occurs during configuration
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
 
+    /**
+     * Method for configuring the web security settings to ignore certain resources
+     *
+     * @param web - the WebSecurity object to be configured
+     * @throws Exception - if an error occurs during configuration
+     */
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/css/**", "/assets/**");
     }
 
+    /**
+     * Method for creating a BCryptPasswordEncoder bean with a strength of 8.
+     *
+     * @return - the BCryptPasswordEncoder bean
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(8);
