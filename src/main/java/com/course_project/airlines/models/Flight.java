@@ -37,6 +37,11 @@ public class Flight {
     @JoinColumn
     private User user;
 
+    /**
+     * Method for retrieving the string representation of the order status.
+     *
+     * @return "Ordered" if the order status is true, "Vacant" otherwise
+     */
     public String getStringOrderStatus() {
         return this.orderStatus ? "Ordered" : "Vacant";
     }

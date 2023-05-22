@@ -4,6 +4,8 @@
         <a href="/personal"><input class="btn btn-primary" type="button" value="Your tickets"></a>
     </div>
     <h2>Find your next stay:</h2>
+<#else>
+    <h2>All available flights:</h2>
 </#if>
 <#if flights?has_content>
     <table class="table table-striped" border="1">

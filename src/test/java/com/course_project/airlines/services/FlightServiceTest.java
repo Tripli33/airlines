@@ -23,7 +23,7 @@ class FlightServiceTest {
     @Autowired
     private FlightService flightService;
     @MockBean
-    Principal principal;
+    private Principal principal;
     @MockBean
     private UserRepository userRepository;
     @MockBean
@@ -43,15 +43,6 @@ class FlightServiceTest {
         Mockito.when(userRepository.findByEmail("mockEmail")).thenReturn(new User());
         Mockito.when(flightRepository.findFlightsByUser(new User())).thenReturn(mockFlights);
         assertEquals(flightService.getUserFlights(principal), Arrays.asList(new Flight(), new Flight()));
-    }
-
-    @Test
-    void getUserByPrincipal() {
-        User mockUser = new User();
-        Mockito.when(principal.getName()).thenReturn("mockEmail");
-        Mockito.when(userRepository.findByEmail("mockEmail")).thenReturn(mockUser);
-        assertEquals(flightService.getUserByPrincipal(principal), new User());
-        assertEquals(flightService.getUserByPrincipal(null), new User());
     }
 
     @Test

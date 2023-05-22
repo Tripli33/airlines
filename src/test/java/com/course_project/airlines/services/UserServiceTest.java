@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.Principal;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,6 +22,8 @@ class UserServiceTest {
     private UserService userService;
     @MockBean
     private UserRepository userRepository;
+    @MockBean
+    private Principal principal;
     @MockBean
     private PasswordEncoder passwordEncoder;
 
@@ -34,6 +37,15 @@ class UserServiceTest {
         assertTrue(user.isActive());
         assertEquals(user.getRoles(), defaultUserRoles);
         Mockito.verify(userRepository, Mockito.times(1)).save(user);
+    }
+
+    @Test
+    void getUserByPrincipal() {
+        User mockUser = new User();
+        Mockito.when(principal.getName()).thenReturn("mockEmail");
+        Mockito.when(userRepository.findByEmail("mockEmail")).thenReturn(mockUser);
+        assertEquals(userService.getUserByPrincipal(principal), new User());
+        assertEquals(userService.getUserByPrincipal(null), new User());
     }
 
     @Test

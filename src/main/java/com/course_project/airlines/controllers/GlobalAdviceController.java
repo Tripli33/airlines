@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 @ControllerAdvice
 @RequiredArgsConstructor
 public class GlobalAdviceController {
+
+    /**
+     * Method for retrieving the username of the currently authenticated user for use in the user profile
+     *
+     * @param currentUser - UserDetails object representing the currently authenticated user
+     * @return - the username of the authenticated user, or null if not authenticated
+     */
     @ModelAttribute("userName")
     public String getUserProfile(@AuthenticationPrincipal UserDetails currentUser) {
         if (
@@ -23,6 +30,5 @@ public class GlobalAdviceController {
         } else {
             return null;
         }
-
     }
 }

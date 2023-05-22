@@ -17,17 +17,35 @@ import javax.validation.Valid;
 public class UserController {
     private final UserService userService;
 
+    /**
+     * Handles the GET request for the login page
+     *
+     * @return - name of the login view template to be rendered
+     */
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
+    /**
+     * Handles the GET request for the registration page
+     *
+     * @return - name of the registration view template to be rendered
+     */
     @GetMapping("/registration")
     public String registration() {
         return "registration";
     }
 
-
+    /**
+     * Handles the POST request for user registration
+     *
+     * @param user - user entity containing the user data from the registration form
+     * @param bindingResult - binding result object to capture any validation errors from the registration form
+     * @param model - model object to add attributes for the view
+     * @return - redirects to the login page if the user is successfully registered or in case of validation errors return
+     * the name of the view template
+     */
     @PostMapping("/registration")
     public String createUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
