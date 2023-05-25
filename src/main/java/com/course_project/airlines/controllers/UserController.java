@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
+/**
+ * Controller class for handling user-related operations such as login and registration
+ */
 @Controller
 @RequiredArgsConstructor
 public class UserController {

@@ -10,6 +10,9 @@ import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
+/**
+ * Model class representing a user entity
+ */
 @Entity
 @Table(name = "user")
 @Data

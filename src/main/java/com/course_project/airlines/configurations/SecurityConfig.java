@@ -13,6 +13,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * Security configuration class
+ * Secures application URLs and configures Spring Security
+ */
 @EnableWebSecurity
 @RequiredArgsConstructor
 @Configuration

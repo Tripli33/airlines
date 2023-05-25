@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 
+/**
+ * Controller to handle flight-related requests
+ */
 @RequiredArgsConstructor
 @Controller
 public class FlightController {

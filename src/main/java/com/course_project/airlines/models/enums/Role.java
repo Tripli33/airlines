@@ -2,6 +2,10 @@ package com.course_project.airlines.models.enums;
 
 import org.springframework.security.core.GrantedAuthority;
 
+/**
+ * Enumeration representing the roles (authorities) of users in the system
+ * Implements the GrantedAuthority interface for compatibility with Spring Security
+ */
 public enum Role implements GrantedAuthority {
     ROLE_USER, ROLE_ADMIN;
 

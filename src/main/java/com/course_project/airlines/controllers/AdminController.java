@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 import java.util.Map;
 
+/**
+ * Controller to handle admin related requests
+ * Requires ROLE_ADMIN authority for access
+ */
 @RequiredArgsConstructor
 @Controller
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")

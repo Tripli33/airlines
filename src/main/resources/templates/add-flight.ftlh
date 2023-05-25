@@ -53,7 +53,7 @@
                         <select class="form-select" name="typeTraveler">
                             <option value="Children">Children</option>
                             <option value="Adult">Adult</option>
-                            <option value="Senior">Seniors</option>
+                            <option value="Senior">Senior</option>
                         </select>
                     </label>
                 </div>

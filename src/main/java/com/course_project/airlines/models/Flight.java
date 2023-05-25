@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * Model class representing a flight entity
+ */
 @Entity
 @Table(name = "flight")
 @Data
@@ -38,7 +41,7 @@ public class Flight {
     private User user;
 
     /**
-     * Method for retrieving the string representation of the order status.
+     * Method for retrieving the string representation of the order status
      *
      * @return "Ordered" if the order status is true, "Vacant" otherwise
      */

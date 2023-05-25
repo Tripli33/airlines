@@ -8,6 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+/**
+ * Controller advice to provide global attributes and behavior for all controllers
+ */
 @ControllerAdvice
 @RequiredArgsConstructor
 public class GlobalAdviceController {
